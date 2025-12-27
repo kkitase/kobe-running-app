@@ -1,20 +1,71 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Kobe Running App
 
-# Run and deploy your AI Studio app
+神戸の街を走るランナーのためのランニングコース共有・管理アプリケーションです。神戸の名所や起伏に富んだ地形を活かしたコースを見つけたり、自身の記録を管理したりすることを目的としています。
 
-This contains everything you need to run your app locally.
+## 🚀 特徴
 
-View your app in AI Studio: https://ai.studio/apps/drive/1fGCS3diAIeT_HX5_nsGHGsW0qvaynWu5
+* **コース検索・表示**: 神戸市内の主要なランニングコースを地図上で確認できます。
+* **インタラクティブマップ**: Leaflet（またはGoogle Maps API）を使用し、視覚的にコースを把握。
+* **レスポンシブデザイン**: スマートフォンからも快適に操作可能（Tailwind CSS採用）。
+* **最新のスタック**: Next.js と TypeScript を利用した高速で安全な動作。
 
-## Run Locally
+## 🛠 使用技術
 
-**Prerequisites:**  Node.js
+* **Frontend**: [Next.js](https://nextjs.org/) (App Router)
+* **Language**: [TypeScript](https://www.typescriptlang.org/)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Maps**: [Leaflet](https://leafletjs.com/) / [React Leaflet](https://react-leaflet.js.org/)
+* **Icons**: [Lucide React](https://lucide.dev/)
 
+## 📦 セットアップ
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 1. リポジトリをクローン
+
+```bash
+git clone https://github.com/tsuyoshikoutou/kobe-running-app.git
+cd kobe-running-app
+
+```
+
+### 2. 依存関係のインストール
+
+```bash
+npm install
+# または
+yarn install
+
+```
+
+### 3. 開発サーバーの起動
+
+```bash
+npm run dev
+# または
+yarn dev
+
+```
+
+ブラウザで [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) を開き、アプリケーションを確認できます。
+
+## 📂 ディレクトリ構成
+
+* `/app`: Next.js のページコンポーネントとルーティング
+* `/components`: 再利用可能なUIコンポーネント
+* `/public`: 画像、地図データ、静的資産
+* `/hooks`: カスタムフック
+* `/types`: TypeScript の型定義
+
+## 📝 今後のロードマップ (予定)
+
+* [ ] ユーザーログイン機能（Firebase / NextAuth.js）
+* [ ] GPXファイルのアップロード・エクスポート
+* [ ] 神戸市公式オープンデータとの連携
+* [ ] コースごとの高低差グラフ表示
+
+## 🤝 貢献について
+
+バグ報告や機能提案は、Issue または Pull Request にて受け付けています。
+
+## 📄 ライセンス
+
+[MIT License](https://www.google.com/search?q=LICENSE)
