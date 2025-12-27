@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          upstream_repository: tsuyoshikoutou/kobe-running-app
-          upstream_branch: main
-          target_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: tsuyoshikoutou/kobe-running-app
+          upstream_sync_branch: main
+          target_sync_branch: main
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
