@@ -69,9 +69,3 @@ yarn dev
 ## 📄 ライセンス
 
 [MIT License](https://www.google.com/search?q=LICENSE)
-
----
-
-### 補足
-
-リポジトリ内に特定のAPIキー（Google MapsやFirebaseなど）が必要な場合は、`.env.example` ファイルを作成し、READMEに「環境変数の設定」セクションを追加することをお勧めします。
