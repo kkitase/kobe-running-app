@@ -2,6 +2,10 @@
 .env
 .env.*
 
+# Firebase
+firebase-debug.log
+.firebase/
+
 # Logs
 logs
 *.log
