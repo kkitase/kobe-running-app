@@ -1,71 +1,110 @@
-# Kobe Running App
+# フォームチェッカー
 
-神戸のランナーのためのランニングコース共有・管理アプリケーションです。自身の記録を管理したりすることを目的としています。
+ランニングフォームをAIが分析し、改善アドバイスとトレーニングメニューを提案するWebアプリケーションです。
 
-## 🚀 特徴
+## 特徴
 
-* **コース検索・表示**: 主要なランニングコースを地図上で確認できます。
-* **インタラクティブマップ**: Leaflet（またはGoogle Maps API）を使用し、視覚的にコースを把握。
-* **レスポンシブデザイン**: スマートフォンからも快適に操作可能（Tailwind CSS採用）。
-* **最新のスタック**: Next.js と TypeScript を利用した高速で安全な動作。
+- **AI フォーム分析**: Gemini AI がランニングフォームを解剖学的・力学的に分析
+- **改善アドバイス**: 接地位置、体幹の傾き、腕振りなどの具体的な改善点を提示
+- **トレーニング提案**: 弱点克服のための練習ドリルを提案
+- **音声読み上げ**: 分析結果を音声で聴くことができます
+- **レスポンシブデザイン**: スマートフォンからも快適に操作可能
 
-## 🛠 使用技術
+## 使用技術
 
-* **Frontend**: [Next.js](https://nextjs.org/) (App Router)
-* **Language**: [TypeScript](https://www.typescriptlang.org/)
-* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-* **Maps**: [Leaflet](https://leafletjs.com/) / [React Leaflet](https://react-leaflet.js.org/)
-* **Icons**: [Lucide React](https://lucide.dev/)
+| カテゴリ | 技術 |
+|---------|------|
+| Frontend | React 19, TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS |
+| AI | Google Gemini API |
+| Icons | Lucide React |
 
-## 📦 セットアップ
+## セットアップ
 
 ### 1. リポジトリをクローン
 
 ```bash
 git clone https://github.com/tsuyoshikoutou/kobe-running-app.git
 cd kobe-running-app
-
 ```
 
 ### 2. 依存関係のインストール
 
 ```bash
 npm install
-# または
-yarn install
-
 ```
 
-### 3. 開発サーバーの起動
+### 3. 環境変数の設定
+
+`.env` ファイルを作成し、Gemini API キーを設定:
+
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+### 4. 開発サーバーの起動
 
 ```bash
 npm run dev
-# または
-yarn dev
-
 ```
 
-ブラウザで [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) を開き、アプリケーションを確認できます。
+ブラウザで http://localhost:3000 を開きます。
 
-## 📂 ディレクトリ構成
+## ディレクトリ構成
 
-* `/app`: Next.js のページコンポーネントとルーティング
-* `/components`: 再利用可能なUIコンポーネント
-* `/public`: 画像、地図データ、静的資産
-* `/hooks`: カスタムフック
-* `/types`: TypeScript の型定義
+```
+├── components/          # UIコンポーネント
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── ImageUploader.tsx
+│   ├── StatusDisplay.tsx
+│   └── AnalysisResultDisplay.tsx
+├── hooks/               # カスタムフック
+│   └── useRunningAnalysis.ts
+├── services/            # 外部サービス連携
+│   └── geminiService.ts
+├── App.tsx              # メインアプリケーション
+├── types.ts             # TypeScript型定義
+└── vite.config.ts       # Vite設定
+```
 
-## 📝 今後のロードマップ (予定)
+## 使い方
 
-* [ ] ユーザーログイン機能（Firebase / NextAuth.js）
-* [ ] GPXファイルのアップロード・エクスポート
-* [ ] 神戸市公式オープンデータとの連携
-* [ ] コースごとの高低差グラフ表示
+1. ランニングフォームの画像をアップロード（またはサンプル画像を選択）
+2. 「AI診断を開始」ボタンをクリック
+3. 分析結果（アドバイス・トレーニングメニュー）を確認
+4. 必要に応じて音声で聴く・結果を共有
 
-## 🤝 貢献について
+## 撮影のコツ
 
-バグ報告や機能提案は、Issue または Pull Request にて受け付けています。
+- 足が地面に着いた瞬間を撮影
+- 真横から全身が入るように撮影
+- 明るい場所でブレないように
 
-## 📄 ライセンス
+## アーキテクチャ
 
-[MIT License](https://www.google.com/search?q=LICENSE)
+詳細は [docs/architecture.md](docs/architecture.md) を参照してください。
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     React App (Vite)                        │
+├─────────────────────────────────────────────────────────────┤
+│  Components        Hooks                Services            │
+│  ┌──────────┐     ┌──────────────────┐  ┌────────────────┐  │
+│  │ Header   │     │useRunningAnalysis│  │ geminiService  │  │
+│  │ Uploader │ ──▶ │  (状態管理)       │──▶│  (API連携)     │  │
+│  │ Display  │     └──────────────────┘  └───────┬────────┘  │
+│  └──────────┘                                   │           │
+└─────────────────────────────────────────────────┼───────────┘
+                                                  ▼
+                                    ┌─────────────────────────┐
+                                    │   Google Gemini API     │
+                                    │  ・画像分析 (Vision)     │
+                                    │  ・音声合成 (TTS)        │
+                                    └─────────────────────────┘
+```
+
+## ライセンス
+
+MIT License
