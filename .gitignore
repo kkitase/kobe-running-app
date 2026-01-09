@@ -6,6 +6,9 @@
 firebase-debug.log
 .firebase/
 
+# Generated files
+docs/*.png
+
 # Logs
 logs
 *.log
